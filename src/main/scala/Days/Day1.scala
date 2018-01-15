@@ -13,10 +13,4 @@ object Day1 extends App {
       case (c, _) => c.asDigit
     }.sum
   }
-
-  val source = Source.fromResource("Days/Day1Captcha.txt").getLines()
-  val captcha = source.next()
-
-  println(decodeXAway(captcha, 1))
-  println(decodeXAway(captcha, captcha.length / 2))
 }
