@@ -11,8 +11,8 @@ class Day1Test extends FunSuite {
     assert(Day1.decodeXAway("1234567", 1) === 0)
   }
 
-  test("single char string returns 0") {
-    assert(Day1.decodeXAway("1", 1) === 0)
+  test("single char string returns 1") {
+    assert(Day1.decodeXAway("1", 1) === 1)
   }
 
   test("single char string returns int if 0 as X") {
