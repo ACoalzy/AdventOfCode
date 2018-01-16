@@ -1,9 +1,9 @@
-import Days.{Day3, Day4}
+import Days.{Day3, Day4, Day5}
 
 import scala.io.Source
 
 object DayRunner extends App {
-  val lines = Source.fromResource("Days/Day4Passphrases.txt").getLines()
+  val lines = Source.fromResource("Days/Day5JumpInstructions.txt").getLines()
 
-  println(Day4.countNoAnagramPassphrases(lines.toSeq))
+  println(Day5.countStrangeJumpsToExit(lines.toVector))
 }
