@@ -1,5 +1,9 @@
-import Days.{Day3}
+import Days.{Day3, Day4}
+
+import scala.io.Source
 
 object DayRunner extends App {
-  println(Day3.spiralSumming(312051))
+  val lines = Source.fromResource("Days/Day4Passphrases.txt").getLines()
+
+  println(Day4.countNoAnagramPassphrases(lines.toSeq))
 }
