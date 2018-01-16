@@ -1,9 +1,5 @@
-import Days.Day2
-
-import scala.io.Source
+import Days.{Day3}
 
 object DayRunner extends App {
-  val lines = Source.fromResource("Days/Day2CheckSum.txt").getLines()
-
-  println(Day2.checksumDivision(lines.toSeq))
+  println(Day3.spiralSumming(312051))
 }
