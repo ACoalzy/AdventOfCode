@@ -1,9 +1,9 @@
-import Days.{Day3, Day4, Day5}
+import Days.{Day3, Day4, Day5, Day6}
 
 import scala.io.Source
 
 object DayRunner extends App {
-  val lines = Source.fromResource("Days/Day5JumpInstructions.txt").getLines()
+  val line = Source.fromResource("Days/Day6Blocks.txt").getLines().next()
 
-  println(Day5.countStrangeJumpsToExit(lines.toVector))
+  println(Day6.countRedistributionCycleLoopSize(line.split("\\s+").map(_.toInt)))
 }
