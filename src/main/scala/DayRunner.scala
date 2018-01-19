@@ -1,9 +1,10 @@
-import Days.{Day3, Day4, Day5, Day6}
+import Days._
 
 import scala.io.Source
 
 object DayRunner extends App {
-  val line = Source.fromResource("Days/Day6Blocks.txt").getLines().next()
+  val lines = Source.fromResource("Days/Day7Tower.txt").getLines()
 
-  println(Day6.countRedistributionCycleLoopSize(line.split("\\s+").map(_.toInt)))
+  val tree = Day7.buildTree(lines.toSeq)
+  println(Day7.findRoots(tree).map(r => Day7.findWeightImbalance(tree, r)))
 }

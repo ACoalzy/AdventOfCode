@@ -8,8 +8,10 @@ object Day6 {
 
   private case class Pair[A](value: A, index: Int)
 
+  private def pairify[A](s: Seq[A]): Seq[Pair[A]] = s.zipWithIndex.map(i => Pair(i._1, i._2))
+
   def redistributionCycle(banks: Memory): Memory = {
-    val indexed = banks.bs.zipWithIndex.map(i => Pair(i._1, i._2))
+    val indexed = pairify(banks.bs)
     val bank = indexed.foldLeft(Pair(0, 0))((z, i) => if (i.value > z.value) i else z)
     val bankSize = banks.bs.size
     val sharedIncrement = bank.value / bankSize
@@ -36,7 +38,7 @@ object Day6 {
 
   def countRedistributionCycleLoopSize(banks: Seq[Int]): Int = {
     val history = redistributeWhilstNoRepeat(Memory(banks), List(), 0)
-    val twoMatchingBanks = history.zipWithIndex.map(i => Pair(i._1, i._2)).filter(p => p.value == history.head)
+    val twoMatchingBanks = pairify(history).filter(p => p.value == history.head)
     twoMatchingBanks(1).index - twoMatchingBanks(0).index
   }
 }
