@@ -4,7 +4,8 @@ import Days._
 import scala.io.Source
 
 object DayRunner extends App {
-  val steps = Source.fromResource("Days/Day11Route.txt").getLines().next().split(",").toList
-  println(Day11.shortestPathLength(steps))
-  println(Day11.getFurthestEverAway(steps))
+  val steps = Source.fromResource("Days/Day12Pipes.txt").getLines()
+  val pipes = Day12.buildPipes(steps.toList)
+  println(Day12.countPipesInGroup(pipes, "0"))
+  println(Day12.countPipeGroups(pipes))
 }
