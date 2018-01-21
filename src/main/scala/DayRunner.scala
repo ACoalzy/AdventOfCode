@@ -4,6 +4,7 @@ import Days._
 import scala.io.Source
 
 object DayRunner extends App {
-  val lines = Source.fromResource("Days/Day10Lengths.txt").map(_.toInt)
-  println(Day10.denseHash(lines.toList, State(0 to 255, 0, 0)))
+  val steps = Source.fromResource("Days/Day11Route.txt").getLines().next().split(",").toList
+  println(Day11.shortestPathLength(steps))
+  println(Day11.getFurthestEverAway(steps))
 }
