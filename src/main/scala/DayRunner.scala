@@ -3,5 +3,7 @@ import Days._
 import scala.io.Source
 
 object DayRunner extends App {
-  println(Day15.countXGenerationMatches(Day15.Generator(634, 16807, 4), Day15.Generator(301, 48271, 8), 5000000))
+  val moves = Source.fromResource("Days/Day16DanceMoves.txt").getLines().next()
+  println(Day16.justOneDance(moves.split(",").toList, 16))
+  println(Day16.xDances(moves.split(",").toList, 16, 1000000000L))
 }
