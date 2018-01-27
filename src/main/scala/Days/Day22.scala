@@ -13,8 +13,13 @@ object Day22 {
   }
 
   case class Carrier(p: Point, v: Point) {
-    def move(infected: Boolean): Carrier = {
-      val newV: Point = if (infected) rotate(v, Right) else rotate(v, Left)
+    def move(node: Char): Carrier = {
+      val newV: Point = node match {
+        case '.' => rotate(v, Left)
+        case '#' => rotate(v, Right)
+        case 'F' => Point(v.x * -1, v.y * -1)
+        case _ => v
+      }
       Carrier(p + newV, newV)
     }
   }
@@ -32,13 +37,18 @@ object Day22 {
     def create(map: Vector[String]): Map = Map(map.map(_.toVector))
   }
 
-  private def marker(infected: Boolean): Char = if (infected) '.' else '#'
+  private def marker(node: Char): Char = node match {
+    case '.' => 'W'
+    case 'W' => '#'
+    case '#' => 'F'
+    case 'F' => '.'
+  }
 
-  private def counter(infected: Boolean): Int = if (infected) 0 else 1
+  private def counter(node: Char): Int = if (node == 'W') 1 else 0
 
   def burst(map: Map, count: Int, car: Carrier): (Map, Int, Carrier) = {
-    val infected = map.map(car.p.x)(car.p.y) == '#'
-    (map.updated(car.p, marker(infected)), count + counter(infected), car.move(infected))
+    val node = map.map(car.p.x)(car.p.y)
+    (map.updated(car.p, marker(node)), count + counter(node), car.move(node))
   }
 
   def outOfBounds(newMap: Map, newCar: Carrier): Boolean =

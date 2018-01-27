@@ -21,12 +21,12 @@ class Day22Test extends FunSuite {
 
   test("count infections with example input") {
     val map = Vector("..#", "#..", "...")
-    assert(Day22.countInfections(map, 70) == 41)
+    assert(Day22.countInfections(map, 100) == 26)
   }
 
   test("count infections with long example input") {
     val map = Vector("..#", "#..", "...")
-    assert(Day22.countInfections(map, 10000) == 5587)
+    assert(Day22.countInfections(map, 10000000) == 2511944)
   }
 
-}
+  }
